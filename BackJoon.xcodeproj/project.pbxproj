@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8125F4252A5E6DB000AAF479 /* 1004littleprince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8125F4242A5E6DB000AAF479 /* 1004littleprince.swift */; };
 		81D7B1D22A5D335500D5AACD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B1D12A5D335500D5AACD /* main.swift */; };
 		81D7B1D92A5D346E00D5AACD /* 1003fibonacci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B1D82A5D346E00D5AACD /* 1003fibonacci.swift */; };
 		81D7B1DB2A5D34FB00D5AACD /* 1002turret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B1DA2A5D34FB00D5AACD /* 1002turret.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8125F4242A5E6DB000AAF479 /* 1004littleprince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1004littleprince.swift; sourceTree = "<group>"; };
 		81D7B1CE2A5D335500D5AACD /* BackJoon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BackJoon; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D7B1D12A5D335500D5AACD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		81D7B1D82A5D346E00D5AACD /* 1003fibonacci.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1003fibonacci.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				81D7B1D12A5D335500D5AACD /* main.swift */,
+				8125F4242A5E6DB000AAF479 /* 1004littleprince.swift */,
 				81D7B1D82A5D346E00D5AACD /* 1003fibonacci.swift */,
 				81D7B1DA2A5D34FB00D5AACD /* 1002turret.swift */,
 			);
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D7B1D92A5D346E00D5AACD /* 1003fibonacci.swift in Sources */,
+				8125F4252A5E6DB000AAF479 /* 1004littleprince.swift in Sources */,
 				81D7B1DB2A5D34FB00D5AACD /* 1002turret.swift in Sources */,
 				81D7B1D22A5D335500D5AACD /* main.swift in Sources */,
 			);
