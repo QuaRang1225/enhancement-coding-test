@@ -1,60 +1,51 @@
 import Foundation
+let input = readLine()!.split(separator: " ").map { Int($0)! }
+let n = input[0]
+var k = input[1]
 
-var N = 0, chance = 0, cnt = 0
+var array = readLine()!.split(separator: " ").map { Int($0)! }
+let original = array
+var swapNumber: (a: Int, b: Int) = (a: 0, b: 0)
+quickSort(array: &array, p: 0, r: n - 1)
 
-func partition(_ arr: inout [Int], _ p: Int, _ r: Int) -> Int {
-    var x, i, tmp: Int
+if k > 0 {
+    print(-1)
+} else {
+    print(swapNumber.a, swapNumber.b)
+}
 
-    x = arr[r]
-    i = p - 1
-    for j in p..<r {
-        if arr[j] <= x {
+
+
+func quickSort(array: inout [Int], p: Int, r: Int) {
+    if p < r {
+        let q = partition(array: &array, p: p, r: r)
+        if k < 1 { return }
+        quickSort(array: &array, p: p, r: q - 1)
+        if k < 1 { return }
+        quickSort(array: &array, p: q + 1, r: r)
+        if k < 1 { return }
+    }
+}
+
+func partition(array: inout [Int], p: Int, r: Int) -> Int {
+    let x = array[r]
+    var i = p - 1
+    for j in p...r - 1 {
+        if array[j] <= x {
             i += 1
-            tmp = arr[j]
-            arr[j] = arr[i]
-            arr[i] = tmp
-            cnt += 1
-            if cnt == chance {
-                print("\(arr[i]) \(arr[j])")
-                return -1
-            }
+            array.swapAt(i, j)
+            swapNumber.a = array[i]
+            swapNumber.b = array[j]
+            k -= 1
+            if k < 1 { return 0 }
+            
         }
     }
     if i + 1 != r {
-        tmp = arr[r]
-        arr[r] = arr[i + 1]
-        arr[i + 1] = tmp
-        cnt += 1
-        if cnt == chance {
-            print("\(arr[i + 1]) \(arr[r])")
-            return -1
-        }
+        array.swapAt(i + 1, r)
+        swapNumber.a = array[i + 1]
+        swapNumber.b = array[r]
+        k -= 1
     }
     return i + 1
 }
-
-func quickSort(_ arr: inout [Int], _ p: Int, _ r: Int) {
-    var q: Int
-    if p < r {
-        q = partition(&arr, p, r)
-        if q == -1 {
-            return
-        }
-        quickSort(&arr, p, q - 1)
-        quickSort(&arr, q + 1, r)
-    }
-}
-
-func main() {
-    let input = readLine()!.split(separator: " ").map { Int($0)! }
-    N = input[0]
-    chance = input[1]
-    var arr = readLine()!.split(separator: " ").map { Int($0)! }
-
-    quickSort(&arr, 0, N - 1)
-    if cnt < chance {
-        print(-1)
-    }
-}
-
-main()
