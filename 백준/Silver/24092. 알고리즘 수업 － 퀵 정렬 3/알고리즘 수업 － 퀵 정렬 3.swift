@@ -1,43 +1,42 @@
-let N = Int(readLine()!)!
-var A = readLine()!.split(separator: " ").compactMap{Int($0)}
-var B = readLine()!.split(separator: " ").compactMap{Int($0)}
-var flag = 0
-
-func main() {
-    // 입력 값 받기
-    func quickSort(A: inout [Int], left: Int, right: Int) {
-        if left >= right { return }
-        if flag == 1 { return }
+func quick3(){
+    let n = Int(readLine()!)!
+    var a = readLine()!.split(separator: " ").map { Int($0)! }
+    let b = readLine()!.split(separator: " ").map { Int($0)! }
+    var result = 0
+    
+    func quickSort(array: inout [Int], p: Int, r: Int) {
+        if p >= r { return }
+        if result == 1 { return }
         
-        let pivot = partition(A: &A, left: left, right: right)
+        let q = partition(array: &array, p: p, r: r)
         
-        quickSort(A: &A, left: left, right: pivot - 1)
-        quickSort(A: &A, left: pivot + 1, right: right)
+        quickSort(array: &array, p: p, r: q - 1)
+        quickSort(array: &array, p: q + 1, r: r)
     }
     
-    func partition(A: inout [Int], left: Int, right: Int) -> Int {
-        var lo = left
-        var hi = right
-        let pivot = A[right]
+    func partition(array: inout [Int], p: Int, r: Int) -> Int {
+        var lo = p
+        var hi = r
+        let q = array[r]
         
         while lo < hi {
-            while lo < hi && A[lo] < pivot {  lo += 1 }
-            while lo < hi && A[hi] >= pivot { hi -= 1 }
+            while lo < hi && array[lo] < q {  lo += 1 }
+            while lo < hi && array[hi] >= q { hi -= 1 }
             
-            A.swapAt(lo, hi)
-            compareArray(A: &A)
+            array.swapAt(lo, hi)
+            compareArray(array: &array)
         }
-        A.swapAt(hi, right)
-        compareArray(A: &A)
+        array.swapAt(hi, r)
+        compareArray(array: &array)
         return hi
     }
-    func compareArray(A: inout [Int]) {
-        guard A.elementsEqual(B) else { return }
-        flag = 1
+    func compareArray(array: inout [Int]) {
+        guard array == b else { return }
+        result = 1
     }
     
-    compareArray(A: &A)
-    quickSort(A: &A, left: 0, right: N - 1)
-    print(flag)
+    compareArray(array: &a)
+    quickSort(array: &a, p: 0, r: n - 1)
+    print(result)
 }
-main()
+quick3()
