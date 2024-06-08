@@ -1,5 +1,5 @@
 function solution(people, limit) {
-    people.sort((a, b) => a - b);
+    people.sort((a,b) => a-b);
     let result = 0;
     let start = 0;
     let end = people.length - 1;
