@@ -1,27 +1,15 @@
 let n = Int(readLine()!)!
-    var k = readLine()!.split(separator: " ").map { Int($0)! }
-    let m = Int(readLine()!)!
-    let l = readLine()!.split(separator: " ").map { Int($0)! }
+let weights = readLine()!.split(separator: " ").map{Int(String($0))!}
+let m = Int(readLine()!)!
+let marble = readLine()!.split(separator: " ").map{Int(String($0))!}
+var dp = Set<Int>()
 
-    var dp = [[Bool]](repeating: [Bool](repeating: false, count: (n + 1) * 500 + 1), count: n + 1)
-    var result = [String]()
-
-    func cal(_ num: Int, _ weight: Int) {
-        if num > n || dp[num][weight]{ return }
-        dp[num][weight] = true
-        
-        if num < n {
-            cal(num + 1, weight)
-            cal(num + 1, weight + k[num])
-            cal(num + 1, abs(weight - k[num]))
-        }
+for weight in weights {
+    var tmp:Set<Int> = [weight]
+    for d in dp {
+        tmp.insert(abs(weight-d))
+        tmp.insert(weight+d)
     }
-    cal(0, 0)
-    for i in l {
-        if i > 15000 {
-            result.append("N")
-            continue
-        }
-        result.append(dp[n][i] ? "Y" : "N")
-    }
-    print(result.joined(separator: " "))
+    dp.formUnion(tmp)
+}
+print(marble.map{dp.contains($0) ? "Y" : "N"}.joined(separator: " "))
