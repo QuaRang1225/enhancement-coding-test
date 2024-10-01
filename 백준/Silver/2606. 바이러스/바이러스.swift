@@ -10,8 +10,8 @@ var cnt = 0
                 }
 func dfs(_ s:Int){
     visited[s] = true
-    guard arr[s] != nil else {return}
-    for i in arr[s]!{
+    guard let a = arr[s] else {return}
+    for i in a{
         if !visited[i]{
             cnt += 1
             dfs(i)
