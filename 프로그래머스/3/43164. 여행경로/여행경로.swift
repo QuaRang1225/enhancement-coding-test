@@ -1,7 +1,7 @@
 import Foundation
 
 func solution(_ tickets:[[String]]) -> [String] {
-    var tickets = tickets.sorted {$0[1] < $1[1]}
+    var tickets = tickets.sorted{ $0[1] < $1[1] }
     var visited = [Bool](repeating: false, count: tickets.count)
 
     var route = [String]()
