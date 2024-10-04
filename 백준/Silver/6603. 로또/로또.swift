@@ -9,17 +9,17 @@ for inp in inputs{
     let n = inp.removeFirst()
     var visited = [Bool](repeating: false, count: n)
 
-    dfs(0, 0,[])
+    dfs(0,[])
     print()
-    func dfs(_ n:Int,_ start:Int,_ arr:[Int]){
-        if n == 6{
+    func dfs(_ start:Int,_ arr:[Int]){
+        if arr.count == 6{
             print(arr.map{String($0)}.joined(separator: " "))
             return
         }
         for i in start..<inp.count{
             if !visited[i]{
                 visited[i] = true
-                dfs(n+1, i,arr+[inp[i]])
+                dfs(i,arr+[inp[i]])
                 visited[i] = false
             }
         }
