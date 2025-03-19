@@ -5,23 +5,20 @@ func solution(_ begin:String, _ target:String, _ words:[String]) -> Int {
     func bfs() -> Int {
         var queue: [String] = [begin]
         var compare: [String] = [begin]
-        var depth = 0
+        var step = 0
         while !queue.isEmpty {
-            let size = queue.count
             let node = queue.removeLast()
-            guard node != target else{ return depth }
-            
-            (0..<size).forEach { _ in
+            guard node != target else{ return step }
+            (0...queue.count).forEach { _ in
                 words.forEach { word in
-                    var diff = 0
-                    zip(node, word).forEach { if $0 != $1 { diff += 1 } }
-                    if diff == 1 && !compare.contains(word){ 
+                    var diff = zip(node, word).filter{ $0 != $1 }.count
+                    if diff == 1,!compare.contains(word){ 
                         queue.append(word)
                         compare.append(word) 
                     }
                 }
             }
-            depth += 1
+            step += 1
         }
         return 0
     }
