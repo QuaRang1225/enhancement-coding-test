@@ -3,15 +3,16 @@ import Foundation
 func solution(_ begin:String, _ target:String, _ words:[String]) -> Int {
     
     func bfs() -> Int {
-        var queue: [String] = [begin]
-        var compare: [String] = [begin]
+        var queue = [begin]
+        var compare = [begin]
+        compare.reserveCapacity(words.count)
         var step = 0
         while !queue.isEmpty {
             let node = queue.removeLast()
             guard node != target else{ return step }
             (0...queue.count).forEach { _ in
                 words.forEach { word in
-                    var diff = zip(node, word).filter{ $0 != $1 }.count
+                    let diff = zip(node, word).filter{ $0 != $1 }.count
                     if diff == 1,!compare.contains(word){ 
                         queue.append(word)
                         compare.append(word) 
