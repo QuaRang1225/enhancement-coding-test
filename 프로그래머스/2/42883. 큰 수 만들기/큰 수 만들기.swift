@@ -1,16 +1,16 @@
 import Foundation
 
- func solution(_ number:String, _ k:Int) -> String {
-        let numArr = number.map{ Int(String($0))! }
+func solution(_ number:String, _ k:Int) -> String {
+        let numArr = number.compactMap{ $0.wholeNumberValue }
         var answer = [Int]()
-        var newk = k
+        var k1 = k
 
         for i in 0..<number.count {
-            while newk > 0, !answer.isEmpty, answer.last! < numArr[i] {
+            while k1 > 0, !answer.isEmpty, answer.last! < numArr[i] {
                 answer.removeLast()
-                newk -= 1
+                k1 -= 1
             }
-            if newk <= 0 {
+            if k1 == 0 {
                 answer.append(contentsOf: numArr[i...])
                 break
             } else {
