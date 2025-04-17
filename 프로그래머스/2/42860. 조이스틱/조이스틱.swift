@@ -7,20 +7,18 @@ func solution(_ name:String) -> Int {
     var move = n - 1
     
     for i in chars.indices{
-        let asciiValue = chars[i].asciiValue!
-        let index = Int(asciiValue - Character("A").asciiValue!)
+        let index = Int(chars[i].asciiValue!) - 65
+        count += min(index, 26 - index)
         
         var next = i + 1
         while next < n && chars[next] == "A"{
             next += 1
         }
-        let rightThenLeft = i * 2 + (n - next)           // 오른쪽 -> 왼쪽
-        let leftThenRight = (n - next) * 2 + i           // 왼쪽 -> 오른쪽
-        move = min(move, rightThenLeft, leftThenRight)
-        count += min(index, 26 - index)
-
-        
+        let rl = i * 2 + (n - next)      //4 + (11 - 3) = 12         
+        let lr = (n - next) * 2 + i       //2(11-3) + 2 = 18   
+        move = min(move, rl, lr)
+        //ZZZAAABBAAT
+        //ZZZ"AAAAAAAA"
     }
-    count += move
-    return count
+    return count + move
 }
